@@ -218,6 +218,7 @@ function gui_esthemes() {
         'RetroHursty69 CRTCabBlast'
         'Saracade scv720'
         'chicueloarcade Chicuelo'
+        'AbiuPlayer ChicueloAP'
         'SuperMagicom nostalgic'
         'lipebello retrorama'
         'lipebello strangerstuff'
