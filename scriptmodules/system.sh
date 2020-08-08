@@ -376,6 +376,7 @@ function get_platform() {
                         __platform="x86"
                         ;;
                 esac
+                __platform="rk3399"
                 ;;
         esac
     fi
@@ -440,6 +441,14 @@ function platform_rpi4() {
         __default_cpu_flags="-mcpu=cortex-a72"
         __platform_flags+=(aarch64)
     fi
+    __platform_flags+=(rpi gles gles3)
+}
+
+function platform_rk3399() {
+    __default_cpu_flags="-mcpu=cortex-a72.cortex-a53"
+    # required for mali headers to define GL functions
+    __default_cflags=" -DGL_GLEXT_PROTOTYPES"
+    __platform_flags+=(aarch64)
     __platform_flags+=(rpi gles gles3)
 }
 
