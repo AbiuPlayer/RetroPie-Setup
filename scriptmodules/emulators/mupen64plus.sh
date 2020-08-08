@@ -43,6 +43,8 @@ function sources_mupen64plus() {
     fi
     if isPlatform "gles"; then
         ! isPlatform "rpi" && repos+=('mupen64plus video-glide64mk2')
+        ! isPlatform "rpi" && repos+=('mupen64plus video-rice')
+        ! isPlatform "rpi" && repos+=('mupen64plus video-glide64')
         if isPlatform "32bit"; then
             repos+=('ricrpi video-gles2rice pandora-backport')
             repos+=('ricrpi video-gles2n64')
@@ -140,6 +142,8 @@ function build_mupen64plus() {
 
     if isPlatform "gles"; then
         ! isPlatform "rpi" && md_ret_require+=('mupen64plus-video-glide64mk2/projects/unix/mupen64plus-video-glide64mk2.so')
+        ! isPlatform "rpi" && md_ret_require+=('mupen64plus-video-rice/projects/unix/mupen64plus-video-rice.so')
+        ! isPlatform "rpi" && md_ret_require+=('mupen64plus-video-glide64/projects/unix/mupen64plus-video-glide64.so')
         if isPlatform "32bit"; then
             md_ret_require+=('mupen64plus-video-gles2rice/projects/unix/mupen64plus-video-rice.so')
             md_ret_require+=('mupen64plus-video-gles2n64/projects/unix/mupen64plus-video-n64.so')
@@ -213,6 +217,12 @@ function configure_mupen64plus() {
         fi
         addEmulator 0 "${md_id}-gles2n64" "n64" "$md_inst/bin/mupen64plus.sh mupen64plus-video-n64 %ROM%"
     elif isPlatform "mali"; then
+        addEmulator 1 "${md_id}-gles2n64" "n64" "$md_inst/bin/mupen64plus.sh mupen64plus-video-n64 %ROM%"
+        addEmulator 0 "${md_id}-GLideN64" "n64" "$md_inst/bin/mupen64plus.sh mupen64plus-video-GLideN64 %ROM%"
+        addEmulator 0 "${md_id}-glide64" "n64" "$md_inst/bin/mupen64plus.sh mupen64plus-video-glide64mk2 %ROM%"
+        addEmulator 0 "${md_id}-gles2rice" "n64" "$md_inst/bin/mupen64plus.sh mupen64plus-video-rice %ROM%"
+        addEmulator 0 "${md_id}-auto" "n64" "$md_inst/bin/mupen64plus.sh AUTO %ROM%"
+    elif isPlatform "kms"; then
         addEmulator 1 "${md_id}-gles2n64" "n64" "$md_inst/bin/mupen64plus.sh mupen64plus-video-n64 %ROM%"
         addEmulator 0 "${md_id}-GLideN64" "n64" "$md_inst/bin/mupen64plus.sh mupen64plus-video-GLideN64 %ROM%"
         addEmulator 0 "${md_id}-glide64" "n64" "$md_inst/bin/mupen64plus.sh mupen64plus-video-glide64mk2 %ROM%"
