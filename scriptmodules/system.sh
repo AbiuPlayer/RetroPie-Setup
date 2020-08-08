@@ -449,7 +449,7 @@ function platform_rk3399() {
     # required for mali headers to define GL functions
     __default_cflags=" -DGL_GLEXT_PROTOTYPES"
     __platform_flags+=(aarch64)
-    __platform_flags+=(rpi gles gles3)
+    __platform_flags+=(kms gles gles3)
 }
 
 function platform_odroid-c1() {
