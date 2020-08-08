@@ -67,7 +67,7 @@ function sources_mupen64plus() {
     if hasPackage cmake 3.9 lt; then
         commit="8a9d52b4"
     fi
-    gitPullOrClone "$md_build/GLideN64" https://github.com/gonetz/GLideN64.git master "$commit"
+    gitPullOrClone "$md_build/GLideN64" https://github.com/AbiuPlayer/GLideN64.git master "$commit"
 
     if [[ -d "GLideN64" ]]; then
         if isPlatform "videocore"; then
@@ -118,6 +118,7 @@ function build_mupen64plus() {
     isPlatform "armv8" && params+=("-DCRC_ARMV8=On")
     isPlatform "mali" && params+=("-DVERO4K=On" "-DCRC_OPT=On" "-DEGL=On")
     isPlatform "x86" && params+=("-DCRC_OPT=On")
+    isPlatform "kms" && params+=("-DKMS=On" "-DCRC_OPT=On" "-DEGL=On")
 
     cmake "${params[@]}" ../../src/
     make
