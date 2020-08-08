@@ -44,7 +44,6 @@ function sources_mupen64plus() {
     if isPlatform "gles"; then
         ! isPlatform "rpi" && repos+=('mupen64plus video-glide64mk2')
         ! isPlatform "rpi" && repos+=('mupen64plus video-rice')
-        ! isPlatform "rpi" && repos+=('mupen64plus video-glide64')
         if isPlatform "32bit"; then
             repos+=('ricrpi video-gles2rice pandora-backport')
             repos+=('ricrpi video-gles2n64')
