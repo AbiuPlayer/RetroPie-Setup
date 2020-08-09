@@ -158,7 +158,7 @@ function build_attractmode() {
     make clean
     local params=(prefix="$md_inst")
     isPlatform "videocore" && params+=(USE_GLES=1 EXTRA_CFLAGS="$CFLAGS -I$md_build/sfml-pi/include -L$md_build/sfml-pi/lib")
-    isPlatform "kms" && params+=(USE_DRM=1 EXTRA_CFLAGS="$CFLAGS -I$md_build/sfml-pi/include -L$md_build/sfml-pi/lib")
+    isPlatform "kms" && params+=(USE_GLES=1 USE_DRM=1 EXTRA_CFLAGS="$CFLAGS -I$md_build/sfml-pi/include -L$md_build/sfml-pi/lib")
     isPlatform "rpi" && params+=(USE_MMAL=1)
     make "${params[@]}"
 
