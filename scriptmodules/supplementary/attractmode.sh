@@ -148,7 +148,7 @@ function build_attractmode() {
         local params
         cd sfml-pi
         isPlatform "videocore" && params="-DSFML_RPI=1 -DEGL_INCLUDE_DIR=/opt/vc/include -DEGL_LIBRARY=/opt/vc/lib/libbrcmEGL.so -DGLES_INCLUDE_DIR=/opt/vc/include -DGLES_LIBRARY=/opt/vc/lib/libbrcmGLESv2.so"
-        isPlatform "kms" && params="-DSFML_DRM=1"
+        isPlatform "kms" && params="-DSFML_DRM=1 -DSFML_OPENGL_ES=1"
         cmake . -DCMAKE_INSTALL_PREFIX="$md_inst/sfml" $params
         make clean
         make
